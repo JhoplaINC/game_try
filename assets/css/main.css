@@ -1,0 +1,104 @@
+body{
+    background-color: rgb(200, 200, 200)!important;
+}
+
+/* ____________ */
+/* GLOBAL STYLE */
+/* ____________ */
+
+.display-none{
+    display: none!important;
+}
+
+.display-block{
+    display: block!important;
+}
+
+.display-flex{
+    display: flex!important;
+}
+
+/* ______ */
+/* MODALS */
+/* ______ */
+
+.blur-background{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgba(0, 0, 0, .4);
+    top: 0;
+    right: 0;
+}
+
+.modal-container{
+    width: 100%;
+    height: 101%;
+    z-index: 9999;
+    position: absolute;
+    background-color: rgba(0, 0, 0, .3);
+    right: 0;
+    bottom: 0;
+    display: flex;
+}
+
+.delete-modal{
+    width: 100%;
+    background-color: rgb(100, 100, 100);
+    position: relative;
+    display: flex;
+    margin: 10% 15% 30% 15%;
+    flex-direction: column;
+    color: rgb(195, 195, 195);
+    border-radius: 50px;
+    border-radius: 30px 30px 50px 50px;
+}
+
+.delete-modal-header{
+    padding: 1% 2%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    background-color: rgb(80, 80, 80);
+    border-radius: 30px 30px 0 0;
+}
+
+.delete-modal-header h5{
+    width: 90%;
+    text-align: center;
+}
+
+.delete-modal-header .close-modal{
+    font-size: 1.5em;
+    margin-right: 2%;
+    margin-bottom: 3px;
+}
+
+.delete-modal-body{
+    padding: 5%;
+    width: 100%;
+}
+
+.delete-modal-body form{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.delete-modal-body form input, .delete-modal-body form button{
+    color: rgb(210, 210, 210);
+    width: 40%;
+    margin-left: 5%;
+    margin-right: 5%;
+    border: none;
+    border-radius: 15px;
+}
+
+.delete-modal-body form input{
+    background-color: rgba(255, 0, 0, .4);
+}
+
+.delete-modal-body form button{
+    background-color: rgb(50, 166, 74);
+}
