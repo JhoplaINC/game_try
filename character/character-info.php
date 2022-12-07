@@ -15,11 +15,17 @@ if(count($skills_result) > 0){ ?>
             </tr>
         </thead>
         <tbody>
-            <?php foreach($skills_result as $player_data){ ?>
+            <?php foreach($skills_result as $player_data){ 
+                
+                if($player_data['character_class_id'] == '1') $player_data['character_class_id'] = "Mage"; 
+                if($player_data['character_class_id'] == '2') $player_data['character_class_id'] = "Assassin"; 
+                if($player_data['character_class_id'] == '3') $player_data['character_class_id'] = "Tank"; 
+
+                ?>
                 <tr>
                     <td><?= $player_data['character_name'] ?></td>
                     <td><?= $player_data['character_gender'] ?></td>
-                    <td><?= $player_data['character_class'] ?></td>
+                    <td><?= $player_data['character_class_id'] ?></td>
                 </tr>
             <?php } ?>
         </tbody>

@@ -2,7 +2,7 @@
 
 include_once '../connection/connection.php';
 
-$records = $connection->prepare('SELECT character_id, character_name, character_gender, character_class FROM `character` WHERE character_account_id = :id;');
+$records = $connection->prepare('SELECT character_id, character_name, character_gender, character_class_id FROM `character` WHERE character_account_id = :id;');
 $records->bindParam(':id', $_SESSION['user_id']);
 $records->execute();
 $results = $records->fetchAll(PDO::FETCH_ASSOC);
@@ -20,11 +20,17 @@ if(count($results) > 0){?>
             </th>
         </thead>
         <tbody>
-        <?php foreach($results as $player_data){ ?>
+        <?php foreach($results as $player_data){ 
+            
+            if($player_data['character_class_id'] == '1') $player_data['character_class_id'] = "Mage"; 
+            if($player_data['character_class_id'] == '2') $player_data['character_class_id'] = "Assassin"; 
+            if($player_data['character_class_id'] == '3') $player_data['character_class_id'] = "Tank"; 
+
+            ?>
             <tr>
                 <td><?= $player_data['character_name']; ?></td>
                 <td><?= $player_data['character_gender']; ?></td>
-                <td><?= $player_data['character_class']; ?></td>
+                <td><?= $player_data['character_class_id']; ?></td>
                 <td>
                     <!-- <button onClik="deleteModal()">
                         Delete Character
