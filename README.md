@@ -12,5 +12,5 @@
 
 I'm pretending to add better technologies or, maybe, migrate it (in the future) to news technologies
 
-Mainly, this game is made by increase my **backend develop skills**
+Mainly, this game is made to increase my **backend develop skills**
 
