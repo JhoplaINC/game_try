@@ -3,12 +3,15 @@
 include_once '../getData/getCharacterInfo.php';
 
 if(count($skills_result) > 0){ ?>
-    <table>
+
+    <h1 class="page-title">Character Info</h1>
+
+    <table class="character-table">
         <thead>
             <tr>
-                <td>Character Name</td>
-                <td>Character Gender</td>
-                <td>Character Class</td>
+                <td>Name</td>
+                <td>Gender</td>
+                <td>Class</td>
             </tr>
         </thead>
         <tbody>
@@ -22,7 +25,7 @@ if(count($skills_result) > 0){ ?>
         </tbody>
     </table>
     
-    <table>
+    <table class="skills-table">
         <thead>
             <tr>
                 <td>Skill Vitality</td>
@@ -39,7 +42,22 @@ if(count($skills_result) > 0){ ?>
             </tr>
         </thead>
         <tbody>
+            <?php if(count($items_result) > 0){ ?>
             <?php foreach($skills_result as $player_data){ ?>
+<tr>
+                <td><?= $player_data['skill_vitality'] + $items_result[0]['item_attr_vit'] ?></td>
+                <td><?= $player_data['skill_strength'] + $items_result[0]['item_attr_str'] ?></td>
+                <td><?= $player_data['skill_speed'] + $items_result[0]['item_attr_spd'] ?></td>
+                <td><?= $player_data['skill_evasiveness'] + $items_result[0]['item_attr_eva'] ?></td>
+                <td><?= $player_data['skill_intelligence'] + $items_result[0]['item_attr_int'] ?></td>
+                <td><?= $player_data['skill_luck'] + $items_result[0]['item_attr_luk'] ?></td>
+                <td><?= $player_data['skill_armor'] + $items_result[0]['item_attr_arm'] ?></td>
+                <td><?= $player_data['skill_magic_defense'] + $items_result[0]['item_attr_mdf'] ?></td>
+                <td><?= $player_data['skill_critical_hit'] + $items_result[0]['item_attr_crt'] ?></td>
+                <td><?= $player_data['skill_physical_attack'] + $items_result[0]['item_mgc_atk'] ?></td>
+                <td><?= $player_data['skill_magic_attack'] + $items_result[0]['item_phy_atk'] ?></td>
+            </tr>
+        <?php }} else { ?>
 <tr>
                 <td><?= $player_data['skill_vitality'] ?></td>
                 <td><?= $player_data['skill_strength'] ?></td>
@@ -59,16 +77,14 @@ if(count($skills_result) > 0){ ?>
     
     <?php
     
-    if(count($items_result) > 0){ 
-        
-        ?>
+    if(count($items_result) > 0){ ?>
 
 <div class="items-container">
     <?php foreach ($items_result as $item_data) { ?>
         
         <div class="item-data">
             <?php echo
-            '<div class="item-head">
+            '<div class="item-name">
                 '.$item_data['item_name'].'
             </div>';
             ?>
@@ -83,7 +99,7 @@ if(count($skills_result) > 0){ ?>
                 if($item_skill == 'item_attr_luk') $item_skill = 'Luck';
                 if($item_skill == 'item_attr_arm') $item_skill = 'Armor';
                 if($item_skill == 'item_attr_mdf') $item_skill = 'Magic Defense';
-                if($item_skill == 'item_attr_crt') $item_skill = 'Crítico';
+                if($item_skill == 'item_attr_crt') $item_skill = 'Critical Hit';
                 if($item_skill == 'item_mgc_atk') $item_skill = 'Magic Attack';
                 if($item_skill == 'item_phy_atk') $item_skill = 'Physical Attack'; 
                 if($item_skill == 'item_body_head') $item_skill = 'Head'; 
@@ -100,27 +116,29 @@ if(count($skills_result) > 0){ ?>
                 
             echo 
             '
-            <div class="item-body">        
+            <div class="item-attr">        
                 '.$item_skill.'
             </div>
-            <div class="item-footer">
+            <div class="item-stat">
                 '.$val.'
-            </div>';
-            ?>
-        </div>
+                </div>';
+                ?>
 <?php       }
         }
-    }
-} ?>
-    </div>
+    }?>
+</div>
+<?php } ?>
+</div>
 
-     <?php } ?>
+<?php } ?>
 
     <p>
         Back to your <a href="../account/profile">account</a>
     </p>
 
-<?php } else {
+<?php 
+
+} else {
     $message = 'There was a problem while trying to get you Character info TT';
 };
 

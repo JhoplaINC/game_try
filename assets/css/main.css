@@ -1,5 +1,6 @@
 body{
-    background-color: rgb(200, 200, 200)!important;
+    background-color: rgb(87, 87, 87)!important;
+    font-family: 'Poppins'!important;
 }
 
 /* ____________ */
@@ -16,6 +17,13 @@ body{
 
 .display-flex{
     display: flex!important;
+}
+
+.page-title{
+    margin: 2% 40% 4%;
+    color: rgb(220, 220, 220);
+    width: 50%;
+    text-decoration: underline;
 }
 
 /* ______ */
@@ -101,4 +109,90 @@ body{
 
 .delete-modal-body form button{
     background-color: rgb(50, 166, 74);
+}
+
+/* ________________________ */
+/* CHARACTER SKILLS SECTION */
+/* ________________________ */
+
+.character-table, .skills-table{
+    margin: 1%;
+}
+
+.character-table thead tr td, .skills-table thead tr td{
+    text-align: center;
+}
+
+.character-table{
+    width: 49%;
+}
+
+.skills-table{
+    width: 98%;
+}
+
+.character-table thead tr td{
+    background-color: red;
+}
+
+.character-table thead tr td:not(:first-child){
+    border-left: 1px solid black
+}
+
+.character-table tbody tr td{
+    background-color: green;
+}
+
+.character-table tbody tr td:not(:first-child){
+    border-left: 1px solid black
+}
+
+.skills-table thead tr td{
+    background-color: red;
+    padding: 0 1%;
+}
+
+.skills-table thead tr td:not(:first-child){
+    border-left: 1px solid black
+}
+
+.skills-table tbody tr td{
+    background-color: green;
+}
+
+.skills-table tbody tr td:not(:first-child){
+    border-left: 1px solid black
+}
+
+.items-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.item-data{
+    width: 20%;
+    background-color: rgb(100, 100, 100);
+    margin: 2% 6% 5% 6%;
+    padding: 1%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    color: rgb(210, 210, 210);
+    border-radius: 20px;
+}
+
+.item-name{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+.item-attr{
+    width: 50%;
+}
+
+.item-stat{
+    width: 50%;
+    text-align: right;
 }
