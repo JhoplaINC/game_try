@@ -13,15 +13,15 @@ if(count($skills_result) > 0){ ?>
         </thead>
         <tbody>
             <?php foreach($skills_result as $player_data){ ?>
-            <tr>
-                <td><?= $player_data['character_name'] ?></td>
-                <td><?= $player_data['character_gender'] ?></td>
-                <td><?= $player_data['character_class'] ?></td>
-            </tr>
+                <tr>
+                    <td><?= $player_data['character_name'] ?></td>
+                    <td><?= $player_data['character_gender'] ?></td>
+                    <td><?= $player_data['character_class'] ?></td>
+                </tr>
             <?php } ?>
         </tbody>
     </table>
-
+    
     <table>
         <thead>
             <tr>
@@ -40,7 +40,7 @@ if(count($skills_result) > 0){ ?>
         </thead>
         <tbody>
             <?php foreach($skills_result as $player_data){ ?>
-            <tr>
+<tr>
                 <td><?= $player_data['skill_vitality'] ?></td>
                 <td><?= $player_data['skill_strength'] ?></td>
                 <td><?= $player_data['skill_speed'] ?></td>
@@ -53,40 +53,68 @@ if(count($skills_result) > 0){ ?>
                 <td><?= $player_data['skill_physical_attack'] ?></td>
                 <td><?= $player_data['skill_magic_attack'] ?></td>
             </tr>
-            <?php } ?>
-        </tbody>
+        <?php } ?>
+</tbody>
     </table>
     
     <?php
     
     if(count($items_result) > 0){ 
         
-        foreach ($items_result as $item_data) {
-            foreach ($item_data as $item_skill => $val) {
+        ?>
+
+<div class="items-container">
+    <?php foreach ($items_result as $item_data) { ?>
+        
+        <div class="item-data">
+            <?php echo
+            '<div class="item-head">
+                '.$item_data['item_name'].'
+            </div>';
+            ?>
+        <?php foreach ($item_data as $item_skill => $val) {
+            if($val > 0 ){ 
+                if($item_skill != 'item_id'){ 
+                if($item_skill == 'item_attr_vit') $item_skill = 'Vitality';
+                if($item_skill == 'item_attr_str') $item_skill = 'Stength';
+                if($item_skill == 'item_attr_spd') $item_skill = 'Speed';
+                if($item_skill == 'item_attr_eva') $item_skill = 'Evasiveness';
+                if($item_skill == 'item_attr_int') $item_skill = 'Intelligence';
+                if($item_skill == 'item_attr_luk') $item_skill = 'Luck';
+                if($item_skill == 'item_attr_arm') $item_skill = 'Armor';
+                if($item_skill == 'item_attr_mdf') $item_skill = 'Magic Defense';
+                if($item_skill == 'item_attr_crt') $item_skill = 'Crítico';
+                if($item_skill == 'item_mgc_atk') $item_skill = 'Magic Attack';
+                if($item_skill == 'item_phy_atk') $item_skill = 'Physical Attack'; 
+                if($item_skill == 'item_body_head') $item_skill = 'Head'; 
+                if($item_skill == 'item_body_neck') $item_skill = 'Neck'; 
+                if($item_skill == 'item_body_eyes') $item_skill = 'Eyes'; 
+                if($item_skill == 'item_body_face') $item_skill = 'Face'; 
+                if($item_skill == 'item_body_chest') $item_skill = 'Chest'; 
+                if($item_skill == 'item_body_legs') $item_skill = 'Legs'; 
+                if($item_skill == 'item_body_feet') $item_skill = 'Feet'; 
+                if($item_skill == 'item_body_back') $item_skill = 'Back'; 
+                if($item_skill == 'item_body_left_hand') $item_skill = 'Left Hand'; 
+                if($item_skill == 'item_body_right_hand') $item_skill = 'Right Hand'; 
+                if($item_skill == 'item_body_both_hands') $item_skill = 'Two Handed'; 
                 
-                if($val > 0){
-                    echo $item_skill . ' ' . $val . '<br />';
-                }
-            }
+            echo 
+            '
+            <div class="item-body">        
+                '.$item_skill.'
+            </div>
+            <div class="item-footer">
+                '.$val.'
+            </div>';
+            ?>
+        </div>
+<?php       }
         }
+    }
+} ?>
+    </div>
 
-
-       /* <div class="items-container">
-            <?php foreach ($items_result as $item_data) { ?>
-                <div class="item-data">
-                    <div class="item-head">
-                        <?= $item_data['item_name'] ?>
-                    </div>
-                    <div class="item-body">
-                        <?= $item_data['item_id'] ?>
-                    </div>
-                    <div class="item-footer">
-    
-                    </div>
-                </div>
-            <?php } ?>
-        </div>*/
-     } ?>
+     <?php } ?>
 
     <p>
         Back to your <a href="../account/profile">account</a>
